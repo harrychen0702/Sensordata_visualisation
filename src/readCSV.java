@@ -1,3 +1,5 @@
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -8,8 +10,22 @@ import java.util.Scanner;
  */
 public class readCSV {
     public ArrayList<dataobject> scan(ArrayList<dataobject> finaldata){
-        String filename="/Users/harrychen/Desktop/DataVisualisationInputFiles/1000.csv";
-        File file=new File(filename);
+        JButton open=new JButton();
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new java.io.File("/Users/harrychen/Desktop"));
+        chooser.setDialogTitle("Hello");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter( null,"csv");
+        chooser.setFileFilter(filter);
+        if (chooser.showOpenDialog(open) == JFileChooser.APPROVE_OPTION){
+            File selectedFile = chooser.getSelectedFile();
+            System.out.println("You choose"+selectedFile.getAbsolutePath());
+        }else {
+            System.out.println( "No file chosen!" );
+        }
+
+
+
+        File file=new File(chooser.getSelectedFile().getAbsolutePath());
         try{
             Scanner input=new Scanner(file);
 
