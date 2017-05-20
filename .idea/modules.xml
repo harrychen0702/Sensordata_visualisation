@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Sensordata_visualisation.iml" filepath="$PROJECT_DIR$/Sensordata_visualisation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Sensor Data Visualisation/Sensor Data Visualisation.iml" filepath="$PROJECT_DIR$/../Sensor Data Visualisation/Sensor Data Visualisation.iml" />
     </modules>
   </component>
 </project>

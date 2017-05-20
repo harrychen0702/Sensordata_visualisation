@@ -9,7 +9,7 @@ import java.util.Scanner;
  * Created by harrychen on 17/5/17.
  */
 public class readCSV {
-    public ArrayList<dataobject> scan(ArrayList<dataobject> finaldata){
+    public ArrayList<data> scan(ArrayList<data> finaldata){
         JButton open=new JButton();
         JFileChooser chooser = new JFileChooser();
         chooser.setCurrentDirectory(new java.io.File("/Users/harrychen/Desktop"));
@@ -34,25 +34,28 @@ public class readCSV {
                 String[] temp=data.split(","); //first split line by comma
 
                 int parsed_time =Integer.parseInt(temp[0]); //parse time
-//                System.out.println(parsed_time);
+
 
                 int parsed_type =Integer.parseInt(temp[1],16); //parse and convert from hex to decimal
-//                System.out.println(parsed_type);
+
 
                 int parsed_version=Integer.parseInt(temp[2],16);
-//                System.out.println(parsed_version);
+
 
                 int parsed_counter=Integer.parseInt(temp[3],16);
-//                System.out.println(parsed_counter);
+
 
                 int parsed_via=Integer.parseInt(temp[4],16);
-//                System.out.println(parsed_via);
+
 
                 int parsed_address=Integer.parseInt(temp[5],16);
-//                System.out.println(parsed_address);
 
+                //If Error in the data: Flag out
                 int parsed_status=Integer.parseInt(temp[6],16);
-//                System.out.println(parsed_status);
+                if (parsed_status!=0)
+                {
+                    System.out.println("Error found in this device: "+parsed_address);
+                }
 
 
                 //Split sensor dataobject into 10 pairs
@@ -68,7 +71,7 @@ public class readCSV {
                 }
 
                 //create a Dataobject object and store the line information into that object
-                dataobject tempob=new dataobject(parsed_time,parsed_type,parsed_version,parsed_counter,parsed_via,parsed_address,parsed_status,sensor_data);
+                data tempob=new data(parsed_time,parsed_type,parsed_version,parsed_counter,parsed_via,parsed_address,parsed_status,sensor_data);
                 finaldata.add(tempob);
 
             }
